@@ -1,0 +1,90 @@
+﻿<Window x:Class="HalonMail.UserInterface.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="454" Width="804">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <TextBlock Text="Accounts" FontWeight="Bold" Name="textblockAccounts" />
+                <ListBox HorizontalAlignment="Stretch" Margin="6" Name="listBoxAccounts" Width="188" MinHeight="90" VerticalAlignment="Stretch"  />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1">
+                <TextBlock Text="Folders" FontWeight="Bold" Name="textblockFolders" />
+                <ListBox HorizontalAlignment="Stretch" Margin="6" Name="listBoxFolders" MinWidth="188" MinHeight="160" VerticalAlignment="Stretch"
+                         DataContext="{Binding ElementName=listBoxAccounts, Path=SelectedItem}" 
+                         ItemsSource="{Binding Path=Folders}" IsSynchronizedWithCurrentItem="True"
+                         />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <TextBlock Text="EMails" FontWeight="Bold" Name="textblockEMails" />
+                <ListView  Margin="6" Name="listBoxEmails" MinHeight="90" VerticalAlignment="Top" HorizontalAlignment="Stretch" 
+                          DataContext="{Binding ElementName=listBoxFolders, Path=SelectedItem}" 
+                         ItemsSource="{Binding Path=EMails}" IsSynchronizedWithCurrentItem="True"
+                          >
+                    <ListView.Resources>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="Background" Value="#bcc7d8" />
+                            <Setter Property="Foreground" Value="Black" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="true">
+
+                            <GridViewColumn 
+                                DisplayMemberBinding="{Binding Path=Subject}" 
+                                Width="240" x:Name="listViewColumnSubject">
+                                <GridViewColumnHeader 
+                                    Tag="subject" 
+                                    Content="Subject" />
+                            </GridViewColumn>
+
+                            <GridViewColumn 
+                                DisplayMemberBinding="{Binding Path=Sender}" 
+                                x:Name="listViewColumnSender">
+                                <GridViewColumnHeader 
+                                    Tag="Sender" 
+                                    Content="Sender" />
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+
+            <StackPanel Name="stackPanelMailContents" Orientation="Vertical" Grid.Row="1"  DataContext="{Binding ElementName=listBoxEmails, Path=SelectedItem}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="4" HorizontalAlignment="Right">
+                        <TextBlock Name="textblockTo" Text="To" />
+                        <TextBlock Name="textblockCc" Text="Cc"/>
+                        <TextBlock Name="textblockBcc" Text="Bcc" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="4" HorizontalAlignment="Stretch">
+                        <TextBox Name="textboxTo" Text="{Binding Path=Receivers_To_String}" />
+                        <TextBox Name="textboxCc" Text="Cc"/>
+                        <TextBox Name="textboxBcc" Text="Bcc" />
+                    </StackPanel>
+                </Grid>
+                <TextBox Text="{Binding Path=Subject}" />
+                <TextBox Name="textBoxMailContent" Text="{Binding Path=TextBody}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="120"  />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

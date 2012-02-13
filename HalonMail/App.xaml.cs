@@ -12,5 +12,11 @@ namespace HalonMail
     /// </summary>
     public partial class App : Application
     {
+        public void Application_Startup(object sender, StartupEventArgs e)
+        {
+
+                AppController.Start();
+
+        }
     }
 }
