@@ -31,6 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActiveUp.Net.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6cceae6a4844c51b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>MailSystem\ActiveUp.Net.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ActiveUp.Net.Imap4, Version=5.0.3454.364, Culture=neutral, PublicKeyToken=9d424b1770e92b68, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>MailSystem\ActiveUp.Net.Imap4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +54,26 @@
     <Compile Include="Model\Folder.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MailSystem\ActiveUp.Net.Common.dll" />
+    <Content Include="MailSystem\ActiveUp.Net.Common.pdb" />
+    <Content Include="MailSystem\ActiveUp.Net.Common.XML" />
+    <Content Include="MailSystem\ActiveUp.Net.Dns.dll" />
+    <Content Include="MailSystem\ActiveUp.Net.Dns.pdb" />
+    <Content Include="MailSystem\ActiveUp.Net.Dns.xml" />
+    <Content Include="MailSystem\ActiveUp.Net.Imap4.dll" />
+    <Content Include="MailSystem\ActiveUp.Net.Imap4.pdb" />
+    <Content Include="MailSystem\ActiveUp.Net.Imap4.XML" />
+    <Content Include="MailSystem\ActiveUp.Net.OpenPGP.dll" />
+    <Content Include="MailSystem\ActiveUp.Net.OpenPGP.pdb" />
+    <Content Include="MailSystem\ActiveUp.Net.OpenPGP.XML" />
+    <Content Include="MailSystem\ActiveUp.Net.Pop3.dll" />
+    <Content Include="MailSystem\ActiveUp.Net.Pop3.pdb" />
+    <Content Include="MailSystem\ActiveUp.Net.Pop3.XML" />
+    <Content Include="MailSystem\ActiveUp.Net.Smtp.dll" />
+    <Content Include="MailSystem\ActiveUp.Net.Smtp.pdb" />
+    <Content Include="MailSystem\ActiveUp.Net.Smtp.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
