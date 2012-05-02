@@ -12,11 +12,11 @@ namespace HalonMail.Core
 {
     public class Storage
     {
-        public ObservableCollection<Account> Accounts { get; set; }
+        public ObservableCollection<Account_IMAP> Accounts { get; set; }
 
         public Storage()
         {
-            Accounts = new ObservableCollection<Account>();
+            Accounts = new ObservableCollection<Account_IMAP>();
 
             // let's create testdata :)
 
@@ -25,9 +25,9 @@ namespace HalonMail.Core
             testReceiver.Lastname = "Receiver";
             testReceiver.EMailAdress = "example@example.com";
 
-            Account testAccount1 = new Account();
+            Account_IMAP testAccount1 = new Account_IMAP();
             testAccount1.Name = "IMAP4 test account by Sven";
-            Folder folder1 = new Folder();
+            Folder_IMAP folder1 = new Folder_IMAP();
             folder1.Name = "Inbox";
             testAccount1.Folders.Add(folder1);
             EMail testEmail1 = new EMail();
@@ -46,9 +46,9 @@ namespace HalonMail.Core
             folder1.EMails.Add(testEmail12);
 
 
-            Account testAccount2 = new Account();
+            Account_IMAP testAccount2 = new Account_IMAP();
             testAccount2.Name = "Test account 2";
-            Folder folder2 = new Folder();
+            Folder_IMAP folder2 = new Folder_IMAP();
             folder2.Name = "Inbox Account 2";
             EMail testEmail2 = new EMail();
             testEmail2.Sender.Firstname = "Chris";
@@ -63,8 +63,6 @@ namespace HalonMail.Core
             Accounts.Add(testAccount2);
 
             ActiveUp.Net.Mail.Imap4Client imapClient = new ActiveUp.Net.Mail.Imap4Client();
-
-            
             
             ActiveUp.Net.Security.SslHandShake handshake = new ActiveUp.Net.Security.SslHandShake("localhost",System.Security.Authentication.SslProtocols.Default,ValidateRemoteCertificate);
 
@@ -73,7 +71,7 @@ namespace HalonMail.Core
              * you may want to exchange to your own environment here ;)) */
 
             imapClient.ConnectSsl("localhost", 13993,handshake);
-            imapClient.Login("sven", "*****");
+            imapClient.Login("sven", "****");
             imapClient.Command("capability");
 
             Mailbox inbox = imapClient.SelectMailbox("inbox");

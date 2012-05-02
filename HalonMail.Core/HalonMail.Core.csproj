@@ -48,10 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Account_SMTP.cs" />
+    <Compile Include="Model\IAccount.cs" />
+    <Compile Include="Model\IFolder.cs" />
     <Compile Include="Storage.cs" />
-    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Account_IMAP.cs" />
     <Compile Include="Model\EMail.cs" />
-    <Compile Include="Model\Folder.cs" />
+    <Compile Include="Model\Folder_IMAP.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
